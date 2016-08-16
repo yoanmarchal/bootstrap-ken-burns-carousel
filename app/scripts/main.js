@@ -1,2 +1,5 @@
 console.log('\'Allo \'Allo!');
-$('.inactiveUntilOnLoad').removeClass('inactiveUntilOnLoad');
+
+(function (){
+  document.querySelector('.inactiveUntilOnLoad').classList.remove('inactiveUntilOnLoad');
+}(document));

@@ -4,6 +4,7 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "https://fonts.googleapis.com/css?family=Raleway:300";
+
 .iniScale{
   transform: scale(1.4, 1.4);
 }
@@ -11,7 +12,18 @@ $icon-font-path: '../fonts/';
   transform: scale(1.01, 1.01);
 }
 
-
+.carousel-inner > .item.prev,
+.carousel-inner > .item.prev.right,
+.carousel-inner > .item.prev.left,
+.carousel-inner > .item.next,
+.carousel-inner > .item.next.right,
+.carousel-inner > .item.next.left,
+.carousel-inner > .item.active.right,
+.carousel-inner > .item.active.left{
+  left: 0;
+  transform: none;
+}
+/* end reset boostrap carrousel */
 .carousel{
   &.--effect--kb{
     position: absolute;
@@ -57,6 +69,13 @@ $icon-font-path: '../fonts/';
     }
     .item {
       height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 5s;
       img {
         position: absolute;
         left: 0;
@@ -85,6 +104,7 @@ $icon-font-path: '../fonts/';
         }
       }
       &.active{
+        opacity: 1;
         &.inactiveUntilOnLoad{
           img{
             @extend .iniScale;
