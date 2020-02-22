@@ -1,34 +1,21 @@
-$icon-font-path: '../fonts/';
-
-// bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-// endbower
 @import "https://fonts.googleapis.com/css?family=Raleway:300";
 
-.iniScale{
-  transform: scale(1.4, 1.4);
-}
-.endScale{
-  transform: scale(1.01, 1.01);
+.active.carousel-item-left, 
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-right, 
+.carousel-item-next:not(.carousel-item-left) {
+  img{
+    &.d-block ,
+    &.w-100 {
+      transform: scale(1.4, 1.4);
+    }
+  }
 }
 
-.carousel-inner > .item.prev,
-.carousel-inner > .item.prev.right,
-.carousel-inner > .item.prev.left,
-.carousel-inner > .item.next,
-.carousel-inner > .item.next.right,
-.carousel-inner > .item.next.left,
-.carousel-inner > .item.active.right,
-.carousel-inner > .item.active.left{
-  left: 0;
-  transform: none;
-}
 /* end reset boostrap carrousel */
 .carousel{
   &.--effect--kb{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
+    max-height: 100vh;
     overflow: hidden;
     .carousel-caption{
       position: absolute;
@@ -67,51 +54,22 @@ $icon-font-path: '../fonts/';
     .carousel-inner{
       height: 100%;
     }
-    .item {
-      height: 100%;
-      width: 100%;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 5s;
+    .carousel-item {
+      overflow: hidden;
       img {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        object-position: center;
-        object-fit: cover;
-        width: 100%;
-        transition: all 5s;
-        transform-origin: bottom left;
-        @extend .iniScale;
-      }
-      &:nth-child(2n+1){
-        img{
-          transform-origin: top right;
+        transition: transform 8s;
+        transform-origin: center center;
+        &[data-origin='top'] {
+          transform-origin: top center;
         }
-      }
-      &:nth-child(3n+1){
-        img{
-          transform-origin: top left;
+        &[data-origin='bottom'] {
+          transform-origin: bottom center;
         }
-      }
-      &:nth-child(4n+1){
-        img{
-          transform-origin: bottom right;
+        &[data-origin='left'] {
+          transform-origin: left center;
         }
-      }
-      &.active{
-        opacity: 1;
-        &.inactiveUntilOnLoad{
-          img{
-            @extend .iniScale;
-          }
-        }
-        img{
-          @extend .endScale;
+        &[data-origin='right'] {
+          transform-origin: right center;
         }
       }
     }
